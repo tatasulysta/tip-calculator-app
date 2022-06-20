@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      :root {
+        --primary: hsl(172, 67%, 45%);
+        --dark-cyan: hsl(183, 100%, 15%);
+        --gray-cyan: hsl(186, 14%, 43%);
+        --light-gray: hsl(185, 41%, 84%);
+        --v-light-cyan: hsl(189, 41%, 97%);
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .left {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      .right {
+        background-color: var(--dark-cyan);
+        display: flex;
+        flex-basis: 50%;
+        border-radius: 12px;
+        flex-direction: column;
+        padding: 20px;
+      }
+      body {
+        background-color: var(--light-gray);
+        font-family: "Space Mono", monospace;
+      }
+
+      .container {
+        display: flex;
+        background-color: white;
+        width: 50%;
+        margin-top: 10vh;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 30px;
+        gap: 50px;
+        border-radius: 20px;
+      }
+      .btn_container {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+      }
+      .btn_container > input {
+        padding: 0;
+        border: 0;
+        background-color: var(--v-light-cyan);
+        padding-right: 10px;
+      }
+      .btn {
+        color: white;
+        background-color: var(--dark-cyan);
+        border: none;
+        cursor: pointer;
+        width: 30%;
+      }
+      .btn,
+      .custom {
+        padding: 8px 0px;
+        border-radius: 5px;
+        font-size: 18px;
+        font-family: "Space Mono", monospace;
+      }
+      .custom {
+        width: 27%;
+      }
+      .btn:hover,
+      #reset:hover {
+        color: var(--dark-cyan);
+        background-color: var(--light-gray);
+      }
+      .content_title {
+        font-size: 13px;
+        color: var(--gray-cyan);
+        margin-bottom: 10px;
+      }
+      .wrapper {
+        margin-bottom: 30px;
+      }
+      input:focus {
+        outline-color: var(--primary);
+        outline-width: 2px;
+      }
+      input {
+        text-align: right;
+        caret-color: var(--primary);
+        padding: 8px 20px;
+        color: var(--dark-cyan) !important;
+        background-color: var(--v-light-cyan);
+        border: none;
+        border-radius: 5px;
+        font-family: "Space Mono", monospace;
+        font-size: 18px;
+        width: 100%;
+      }
+      ::-webkit-input-placeholder {
+        text-align: center;
+      }
+
+      :-moz-placeholder {
+        text-align: center;
+      }
+
+      ::-moz-placeholder {
+        text-align: center;
+      }
+
+      :-ms-input-placeholder {
+        text-align: center;
+      }
+      .icon {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: 10px;
+        font-family: "Space Mono", monospace;
+        color: var(--light-gray);
+        font-size: 18px;
+      }
+      .info {
+        font-size: 13px;
+        color: var(--gray-cyan);
+        margin-bottom: 10px;
+        color: hsl(8, 73%, 65%);
+      }
+      .warn:focus {
+        outline-color: hsl(8, 73%, 65%);
+        outline-width: 2px;
+      }
+      .hide {
+        display: none !important;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+      }
+      .title {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+      }
+      .amount {
+        margin-top: 40px;
+        font-size: 36px;
+        color: var(--primary);
+      }
+      .person {
+        color: var(--gray-cyan);
+      }
+      #reset {
+        margin-top: 20%;
+        padding: 8px;
+        font-family: "Space Mono", monospace;
+        font-size: 16px;
+        background-color: var(--primary);
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+      }
+      h2 {
+        text-align: center;
+        line-height: 10px;
+        font-family: "Space Mono", monospace;
+        letter-spacing: 5px;
+        color: var(--gray-cyan);
+        flex-wrap: wrap;
+      }
+      .onselect {
+        background-color: var(--primary) !important;
+        color: var(--dark-cyan) !important;
+      }
+      .all {
+        margin-top: 10vh;
+      }
+      @media screen and (max-width: 375px) {
+        .container {
+          flex-direction: column;
+          width: 100vw;
+          padding: 0px 0px 20px 0px;
+          margin: 0;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        }
+        input {
+          width: 80%;
+        }
+        .left {
+          padding-top: 20px;
+          width: 80%;
+        }
+        .right {
+          width: 80%;
+        }
+        .btn {
+          width: 48%;
+        }
+        .btn_container {
+          row-gap: 10px;
+        }
+        .custom {
+          width: 43%;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .container {
+          flex-direction: column;
+          width: 96%;
+          padding: 0px 0px 20px 0px;
+          margin-left: 0;
+          margin-right: 0;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        }
+        input {
+          width: 80%;
+        }
+        .left {
+          padding-top: 20px;
+          width: 80%;
+        }
+        .right {
+          width: 80%;
+        }
+        .btn {
+          width: 48%;
+        }
+        .btn_container {
+          row-gap: 10px;
+        }
+        .custom {
+          width: 43%;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .container {
+          width: 92%;
+          padding: 30px;
+          margin-left: 0;
+          margin-right: 0;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        }
+        input {
+          width: 80%;
+        }
+        .left {
+          padding-top: 20px;
+          width: 80%;
+        }
+        .right {
+          width: 80%;
+        }
+        .btn {
+          width: 48%;
+        }
+        .btn_container {
+          row-gap: 10px;
+        }
+        .custom {
+          width: 43%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="all">
+      <h2>SPLI</h2>
+      <h2>TTER</h2>
+      <div class="container">
+        <div class="left">
+          <span class="wrapper">
+            <span class="content_title"> Bill </span>
+
+            <input type="text" name="bill" id="bill" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="17"
+              class="icon"
+            >
+              <path
+                fill="#9EBBBD"
+                d="M6.016 16.328v-1.464c1.232-.08 2.22-.444 2.964-1.092.744-.648 1.116-1.508 1.116-2.58v-.144c0-.992-.348-1.772-1.044-2.34-.696-.568-1.708-.932-3.036-1.092V4.184c.56.144 1.012.4 1.356.768.344.368.516.816.516 1.344v.288h1.824v-.432c0-.448-.088-.876-.264-1.284a3.783 3.783 0 00-.744-1.116A4.251 4.251 0 007.54 2.9a5.324 5.324 0 00-1.524-.492V.872H4.288V2.36a5.532 5.532 0 00-1.416.324c-.448.168-.84.392-1.176.672-.336.28-.604.616-.804 1.008-.2.392-.3.844-.3 1.356v.144c0 .96.316 1.708.948 2.244.632.536 1.548.884 2.748 1.044v3.912c-.704-.16-1.248-.472-1.632-.936-.384-.464-.576-1.08-.576-1.848v-.288H.256v.576c0 .464.08.924.24 1.38.16.456.404.88.732 1.272.328.392.744.728 1.248 1.008s1.108.476 1.812.588v1.512h1.728zM4.288 7.424c-.688-.128-1.164-.332-1.428-.612-.264-.28-.396-.644-.396-1.092 0-.464.176-.832.528-1.104.352-.272.784-.448 1.296-.528v3.336zm1.728 5.712V9.344c.768.128 1.328.328 1.68.6.352.272.528.688.528 1.248 0 .544-.196.984-.588 1.32-.392.336-.932.544-1.62.624z"
+              />
+            </svg>
+          </span>
+          <span class="wrapper">
+            <span class="content_title"> Select Tip %</span>
+            <div class="btn_container">
+              <button class="btn btns">5%</button>
+              <button class="btn btns">10%</button>
+              <button class="btn btns">15%</button>
+              <button class="btn btns">25%</button>
+              <button class="btn btns">50%</button>
+              <input
+                type="number "
+                name=""
+                id="custom"
+                class="custom"
+                placeholder="Custom"
+              />
+            </div>
+          </span>
+          <span class="wrapper">
+            <span class="row">
+              <span class="content_title">Number of People</span>
+              <span class="info hide" id="info">Can't be zero </span>
+            </span>
+            <input type="text" name="people" id="people" />
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="16"
+              class="icon"
+            >
+              <path
+                fill="#9EBBBD"
+                d="M9.573 7.729c.406 0 .784.07 1.126.209.342.14.639.33.881.569.232.227.438.503.614.82a5.1 5.1 0 01.407.949c.097.312.178.654.242 1.016.062.359.105.699.126 1.011.02.307.031.624.031.945 0 .836-.259 1.512-.768 2.01-.504.492-1.17.742-1.98.742H2.748c-.81 0-1.477-.25-1.98-.742C.259 14.76 0 14.084 0 13.248c0-.322.01-.64.032-.945.02-.312.063-.652.126-1.01.063-.363.144-.705.242-1.017.1-.323.238-.643.407-.948.176-.318.382-.594.613-.821.243-.238.54-.43.882-.57.342-.138.72-.208 1.125-.208.16 0 .313.067.61.265.183.123.397.264.636.421.204.134.48.259.822.372.333.11.671.167 1.005.167a3.19 3.19 0 001.006-.167c.341-.113.618-.238.822-.372l.636-.42c.296-.2.45-.266.61-.266zM6.598 0C7.63 0 8.522.38 9.252 1.129s1.1 1.666 1.1 2.724c0 1.06-.37 1.976-1.1 2.725-.73.75-1.623 1.13-2.654 1.13-1.03 0-1.924-.38-2.653-1.13-.73-.749-1.1-1.666-1.1-2.725 0-1.058.37-1.975 1.1-2.724C4.675.379 5.567 0 6.598 0z"
+              />
+            </svg>
+          </span>
+        </div>
+        <div class="right">
+          <div class="row">
+            <div class="title">
+              Tip Amount <span class="person">/ person</span>
+            </div>
+            <span class="amount" id="tip_amount">$0.00</span>
+          </div>
+          <div class="row">
+            <div class="title">Total <span class="person">/ person</span></div>
+            <div class="amount" id="total_amount">$0.00</div>
+          </div>
+          <button id="reset">RESET</button>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://www.linkedin.com/in/tata-sulysta-1815821a2/"
+          >Tata Sulysta</a
+        >.
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
