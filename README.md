@@ -28,7 +28,7 @@ Users should be able to:
 
 
 ### Links
-- Live Site URL: [tip-calculator-app](https://your-live-site-url.com)
+- Live Site URL: [tip-calculator-app](https://tip-calculator-app-tata.netlify.app/)
 
 ## My process
 
