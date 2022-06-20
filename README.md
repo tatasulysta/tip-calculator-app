@@ -35,7 +35,7 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
+- Desktop-first workflow
 
 ## Author
 - LinkedIn - [tata sulysta](https://www.linkedin.com/in/tata-sulysta-1815821a2/)
